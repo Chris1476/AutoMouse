@@ -1,20 +1,24 @@
 const canvas = document.getElementById("superficie");
 const ctx = canvas.getContext("2d");
 
-const pixelSize = 10; // más chico = más detalle
+let y = 0;
+const speed = 1.5; // velocidad del barrido
+const barHeight = 25; // altura de la barra blanca
 
-function generarPatron() {
+function animar() {
+    ctx.fillStyle = "black";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    for (let y = 0; y < canvas.height; y += pixelSize) {
-        for (let x = 0; x < canvas.width; x += pixelSize) {
+    ctx.fillStyle = "white";
+    ctx.fillRect(0, y, canvas.width, barHeight);
 
-            const gris = 80 + Math.floor(Math.random() * 120);
-            ctx.fillStyle = `rgb(${gris},${gris},${gris})`;
+    y += speed;
+    if (y > canvas.height) y = -barHeight;
 
-            ctx.fillRect(x, y, pixelSize, pixelSize);
-        }
-    }
+    requestAnimationFrame(animar);
 }
 
-setInterval(generarPatron, 150);
+animar();
+
+
 
