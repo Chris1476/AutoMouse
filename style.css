@@ -21,13 +21,10 @@ body {
     width: 227px;
     height: 227px;
     border: 2px solid #444;
-    display: block;
+    background: black;
 }
-
 
 .texto {
     margin-top: 12px;
-    text-align: center;
-    font-size: 1.1em;
     opacity: 0.8;
 }
